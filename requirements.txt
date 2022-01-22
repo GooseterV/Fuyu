@@ -17,7 +17,7 @@ charset-normalizer
 click
 cloudinary
 cmudict
-opencv-python
+opencv-python-headless
 colorama
 colormath
 discord
