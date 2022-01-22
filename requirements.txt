@@ -17,8 +17,10 @@ charset-normalizer
 click
 cloudinary
 cmudict
+cv2
 colorama
 colormath
+colorsys
 discord
 discord-pretty-help
 discord.py
