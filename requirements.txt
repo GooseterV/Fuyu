@@ -22,6 +22,7 @@ colormath
 discord
 discord-pretty-help
 discord.py
+discord-interactions
 distlib
 docopt
 docutils

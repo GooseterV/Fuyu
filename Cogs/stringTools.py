@@ -23,9 +23,11 @@ class StringCog(commands.Cog, name="String Commands"):
 		rhymes = pronouncing.rhymes(word)
 		random.shuffle(rhymes)
 		if amount <= 25:
-			msgText = ""
-			for ryhme in rhymes[:amount-1]:
-				msgText += f"{ryhme}, "
+			msgText = " "
+			for rhyme in rhymes[:amount-1]:
+				msgText += f"{rhyme}, "
+			if len(rhymes) == 0:
+				msgText += f"There are no words that rhyme with {word}"
 			await ctx.send(msgText)
 		elif amount <= 0 or amount > 25:
 			await ctx.send("**Amount** must be greater than 0 and less than 26!")
