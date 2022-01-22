@@ -1,6 +1,6 @@
 aiohttp<=3.8.0
 aiosignal==1.2.0
-async-timeout<=4.0.0
+async-timeout<4.0.0
 asyncio==3.4.3
 attrs==21.2.0
 awscli==1.22.22
