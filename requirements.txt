@@ -23,6 +23,7 @@ discord
 discord-pretty-help
 discord.py
 discord-interactions
+discord-py-slash-command
 distlib
 docopt
 docutils
