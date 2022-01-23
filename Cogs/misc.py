@@ -70,8 +70,8 @@ class MiscCog(commands.Cog, name="Miscellaneous Commands"):
 					description = "Echos a message into another channel")
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	@commands.has_permissions(administrator=True)
-	async def echo(self, ctx, message, channel:discord.TextChannel):	
-		await channel.send(message)
+	async def echo(self, ctx, message, channelid):	
+		await discord.get_channel(channelid).send(message)
 
 def setup(bot:commands.Bot):
 	bot.add_cog(MiscCog(bot))
