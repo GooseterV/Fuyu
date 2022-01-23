@@ -70,9 +70,8 @@ class MiscCog(commands.Cog, name="Miscellaneous Commands"):
 					description = "Echos a message into another channel")
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	@commands.has_permissions(administrator=True)
-	async def echo(self, ctx, message, channelid):
-		channel = [c for c in self.bot.get_all_channels() if c.id == channelid][0]	
-		print(channel)
+	async def echo(self, ctx, channelid:int, *, message):
+		channel = self.bot.get_channel(channelid)
 		await channel.send(message)
 
 def setup(bot:commands.Bot):
