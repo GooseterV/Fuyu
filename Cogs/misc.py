@@ -71,7 +71,8 @@ class MiscCog(commands.Cog, name="Miscellaneous Commands"):
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	@commands.has_permissions(administrator=True)
 	async def echo(self, ctx, message, channelid):
-		channel = discord.utils.get(self.bot.get_all_channels(), id=channelid)	
+		channel = [c for c in self.bot.get_all_channels() if c.id == channelid][0]	
+		print(channel)
 		await channel.send(message)
 
 def setup(bot:commands.Bot):
