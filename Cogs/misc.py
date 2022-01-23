@@ -65,6 +65,13 @@ class MiscCog(commands.Cog, name="Miscellaneous Commands"):
 		embed.set_footer(text="Powered by Google Translate")
 		await ctx.send(embed=embed)
 
+	@commands.command(name = "echo",
+					usage="{message} {channel}",
+					description = "Echos a message into another channel")
+	@commands.cooldown(1, 2, commands.BucketType.member)
+	@commands.has_permissions(administrator=True)
+	async def echo(self, ctx, message, channel:discord.TextChannel):	
+		await channel.send(message)
 
 def setup(bot:commands.Bot):
 	bot.add_cog(MiscCog(bot))
