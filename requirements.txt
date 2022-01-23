@@ -122,3 +122,5 @@ Werkzeug
 yarg
 yarl
 zipp
+SQLAlchemy
+pandas
