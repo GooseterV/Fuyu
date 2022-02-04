@@ -4,8 +4,8 @@ import time
 import discord
 from discord.ext import commands
 from discord.ext.commands import (CheckFailure, CommandNotFound,
-                                  MissingPermissions, MissingRequiredArgument,
-                                  NotOwner)
+								  MissingPermissions, MissingRequiredArgument,
+								  NotOwner)
 
 
 class OnCommandErrorCog(commands.Cog, name="on command error"):
@@ -32,7 +32,7 @@ class OnCommandErrorCog(commands.Cog, name="on command error"):
 			await ctx.send(f"Command `~{ctx.invoked_with}` does not exist. Did you mean **~{ccmd}**?")
 			return
 		elif isinstance(error, MissingPermissions):
- 			await ctx.send("You are missing the required permissions to use this command!");print(error)
+			await ctx.send("You are missing the required permissions to use this command!");print(error)
 		elif isinstance(error, CheckFailure):
 			await ctx.send(error)
 		elif isinstance(error, NotOwner):
