@@ -20,23 +20,23 @@ class FunCog(commands.Cog, name="Fun Commands"):
 					description = "Finds what percent out of 100 you are waifu.")
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def waifurate(self, ctx, user: discord.Member = None):
-		"😳 Finds your waifu rate out of 100."
+		"<:astolfosmug:939273321344798782> Finds your waifu rate out of 100."
 		result = str(random.randint(1,100))
 		if result == 69:
 			emoji = ":ok_hand:"
 		else:
-			emoji = ":flushed:"
+			emoji = "<:astolfosmug:939273321344798782>"
 		if user:
 			message100 = str(emoji) + " <@!" + str(user.id) + "> Is " + str(result) + "% waifu"
 			embed100 = discord.Embed(title="Waifu-inator 2000", description=str(message100))
-			embed100.set_author(name=user, icon_url=user.avatar)
+			embed100.set_author(name=user, icon_url=user.avatar_url)
 			embed100.timestamp = ctx.message.created_at
 			embed100.color = 1356771
 			await ctx.send(embed=embed100)
 		else:
 			message10 = str(emoji) + " You are " + str(result) + "% waifu"
 			embed101 = discord.Embed(title="Waifu-inator 2000", description=str(message10))
-			embed101.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar)
+			embed101.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 			embed101.timestamp = ctx.message.created_at
 			embed101.color = 1356771
 			await ctx.send(embed=embed101)
@@ -53,14 +53,14 @@ class FunCog(commands.Cog, name="Fun Commands"):
 		if user:
 			message0 = ":video_game: <@!" + str(user.id) + "> Is " + str(result) + "% gamer"
 			embed1 = discord.Embed(title="Gamer-inator 2000", description=str(message0))
-			embed1.set_author(name=user, icon_url=user.avatar)
+			embed1.set_author(name=user, icon_url=user.avatar_url)
 			embed1.timestamp = ctx.message.created_at
 			embed1.color = 1356771
 			await ctx.send(embed=embed1)
 		else:
 			message01 = ":video_game: " + "You are " + str(result) + "% gamer"
 			embed = discord.Embed(title="Gamer-inator 2000", description=str(message01))
-			embed.set_author(name=ctx.message.author, icon_url=ctx.author.avatar)
+			embed.set_author(name=ctx.message.author, icon_url=ctx.author.avatar_url)
 			embed.timestamp = ctx.message.created_at
 			embed.color = 1356771
 			await ctx.send(embed=embed)
@@ -74,16 +74,16 @@ class FunCog(commands.Cog, name="Fun Commands"):
 		"Finds how stupid you are out of 100."
 		result = str(random.randint(1,100))
 		if user:
-			message12 = "<:dummie:837842451505872946> <@!" + str(user.id) + "> Is " + str(result) + "% idiot"
+			message12 = "<:dingus:939272240682377248> <@!" + str(user.id) + "> Is " + str(result) + "% idiot"
 			embed1 = discord.Embed(title="Stupid-inator 2000", description=str(message12))
-			embed1.set_author(name=user, icon_url=user.avatar)
+			embed1.set_author(name=user, icon_url=user.avatar_url)
 			embed1.timestamp = ctx.message.created_at
 			embed1.color = 1356771
 			await ctx.send(embed=embed1)
 		else:
-			message2 = "<:dummie:837842451505872946> " + "You are " + str(result) + "% idiot"
+			message2 = "<:dingus:939272240682377248> " + "You are " + str(result) + "% idiot"
 			embed013 = discord.Embed(title="Stupid-inator 2000", description=str(message2))
-			embed013.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar)
+			embed013.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 			embed013.timestamp = ctx.message.created_at
 			embed013.color = 1356771
 			await ctx.send(embed=embed013)
@@ -100,14 +100,14 @@ class FunCog(commands.Cog, name="Fun Commands"):
 		if user:
 			message0 = ":sunglasses: <@!" + str(user.id) + "> Is " + str(result) + "% cool"
 			embed1 = discord.Embed(title="Cool-inator 2000", description=str(message0))
-			embed1.set_author(name=user, icon_url=user.avatar)
+			embed1.set_author(name=user, icon_url=user.avatar_url)
 			embed1.timestamp = ctx.message.created_at
 			embed1.color = 1356771
 			await ctx.send(embed=embed1)
 		else:
 			message01 = ":sunglasses: " + "You are " + str(result) + "% cool"
 			embed = discord.Embed(title="Cool-inator 2000", description=str(message01))
-			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar)
+			embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 			embed.timestamp = ctx.message.created_at
 			embed.color = 1356771
 			await ctx.send(embed=embed)
