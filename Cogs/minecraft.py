@@ -26,6 +26,7 @@ def zipfolder(foldername, target_dir):
 		for file in files:
 			fn = os.path.join(base, file)
 			zipobj.write(fn, fn[rootlen:])
+	zipobj.close()
 
 class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 	"Commands relating to minecraft"
