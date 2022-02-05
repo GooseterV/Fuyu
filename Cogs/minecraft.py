@@ -36,6 +36,7 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 			}
 		}
 		os.mkdir(f"temporary\\{name}")
+		print(os.path.exists(f"temporary\\{name}"))
 		os.mkdir(f"temporary\\{name}\\data")
 		os.mkdir(f"temporary\\{name}\\data\\{name}")
 		os.mkdir(f"temporary\\{name}\\data\\{name}\\functions\\")
