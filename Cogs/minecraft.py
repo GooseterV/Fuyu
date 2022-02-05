@@ -18,15 +18,14 @@ def absoluteFilePaths(directory):
 	for dirpath,_,filenames in os.walk(directory):
 		for f in filenames:
 			yield os.path.abspath(os.path.join(dirpath, f))
-   
-def zipfolder(foldername, target_dir):            
-	zipobj = zipfile.ZipFile(foldername + '.zip', 'w', zipfile.ZIP_DEFLATED)
-	rootlen = len(target_dir) + 1
-	for base, dirs, files in os.walk(target_dir):
-		for file in files:
-			fn = os.path.join(base, file)
-			zipobj.write(fn, fn[rootlen:])
-	zipobj.close()
+
+def zipfolder(foldername, target):				
+	from os.path import basename
+	with zipfile.ZipFile(target, 'w') as zipObj:
+		for folderName, subfolders, filenames in os.walk(foldername):
+			for filename in filenames:
+				filePath = os.path.join(folderName, filename)
+				zipObj.write(filePath, basename(filePath))
 
 class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 	"Commands relating to minecraft"
