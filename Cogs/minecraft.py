@@ -36,7 +36,6 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 			}
 		}
 		os.mkdir(f"temporary\\{name}")
-		print(os.path.exists(f"temporary\\{name}"))
 		os.mkdir(f"temporary\\{name}\\data")
 		os.mkdir(f"temporary\\{name}\\data\\{name}")
 		os.mkdir(f"temporary\\{name}\\data\\{name}\\functions\\")
@@ -49,15 +48,9 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		#for fp in absoluteFilePaths(packdir):
 			#zf.write(fp)
 		shutil.make_archive(f"temporary\\{name}", 'zip', os.path.abspath(packdir))
-		print(os.path.exists(f"temporary\\{name}.zip"))
-		print(os.path.abspath(f"temporary\\{name}.zip"))
-		print(os.listdir(packdir))
-		for p in absoluteFilePaths(packdir):
-			print(p)
 		zippedPack = discord.File(os.path.abspath(f"temporary\\{name}.zip"), filename=name+".zip")
 		tickfile.close()
 		metafile.close()
-		print(os.path.abspath(packdir))
 		shutil.rmtree(os.path.abspath(packdir))
 		await ctx.send("Created pack template!", file=zippedPack)
 		os.remove(os.path.abspath(f"temporary\\{name}.zip"))
