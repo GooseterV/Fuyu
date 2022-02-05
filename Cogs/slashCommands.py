@@ -164,6 +164,10 @@ class Slash(commands.Cog, name="Slash Commands"):
 					create_choice(
 						name="Checkers in the Park",
 						value="checkers"
+					),
+					create_choice(
+						name="Sketch Heads.",
+						value="sketch"
 					)
 				]
 			)
@@ -180,7 +184,8 @@ class Slash(commands.Cog, name="Slash Commands"):
 			"word":879863976006127627,
 			"letter":879863686565621790,
 			"spell":852509694341283871,
-			"checkers":832013003968348200
+			"checkers":832013003968348200,
+			"sketch":902271654783242291
 		}
 		voice = ctx.author.voice
 		if not voice:
