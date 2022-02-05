@@ -63,7 +63,7 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		#for fp in absoluteFilePaths(packdir):
 			#zf.write(fp)
 		#shutil.make_archive("temporary\\" + name, 'zip', packdir)
-		zipfolder(f"temporary\\{name}.zip", f"temporary\\{name}")
+		zipfolder(f"temporary\\{name}", f"temporary\\{name}.zip")
 		print(f"temporary\\{name}.zip", os.path.exists(f"temporary\\{name}.zip"))
 		zippedPack = discord.File(f"temporary\\{name}.zip", filename=name+".zip")
 		tickfile.close()
