@@ -52,6 +52,8 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		shutil.make_archive(f"temporary\\{name}", 'zip', os.path.abspath(packdir))
 		print(os.path.abspath(f"temporary/{name}.zip"))
 		print(os.listdir(packdir))
+		for p in absoluteFilePaths(packdir):
+			print(p)
 		zippedPack = discord.File(os.path.abspath(f"temporary/{name}.zip"), filename=name+".zip")
 		tickfile.close()
 		metafile.close()
