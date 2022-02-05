@@ -41,7 +41,7 @@ menu = DefaultMenu(page_left=":fuyu_arrowL:907403532238479380", page_right=":fuy
 ending_note = "{ctx.author}"
 bot.help_command = PrettyHelp(menu=menu, color=1356771, ending_note=ending_note, show_index=True, no_category="Undefined")
 # Load cogs
-to_load = ["misc", "moderation", "onCommandError", "math", "fun", "stringTools", "slashCommands"]
+to_load = ["misc", "moderation", "onCommandError", "math", "fun", "stringTools", "slashCommands", "minecraft"]
 for cog in to_load:
 	bot.load_extension(f"Cogs.{cog}")
 
