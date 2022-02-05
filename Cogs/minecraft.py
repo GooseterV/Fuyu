@@ -8,6 +8,7 @@ import zipfile
 import discord
 import shutil
 import os
+import sys
 from discord.ext import commands
 from pytz import timezone
 
@@ -17,6 +18,14 @@ def absoluteFilePaths(directory):
 	for dirpath,_,filenames in os.walk(directory):
 		for f in filenames:
 			yield os.path.abspath(os.path.join(dirpath, f))
+   
+def zipfolder(foldername, target_dir):            
+	zipobj = zipfile.ZipFile(foldername + '.zip', 'w', zipfile.ZIP_DEFLATED)
+	rootlen = len(target_dir) + 1
+	for base, dirs, files in os.walk(target_dir):
+		for file in files:
+			fn = os.path.join(base, file)
+			zipobj.write(fn, fn[rootlen:])
 
 class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 	"Commands relating to minecraft"
@@ -53,7 +62,8 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		#zf = zipfile.ZipFile(f"temporary/{name}.zip","w")
 		#for fp in absoluteFilePaths(packdir):
 			#zf.write(fp)
-		shutil.make_archive("temporary\\" + name, 'zip', packdir)
+		#shutil.make_archive("temporary\\" + name, 'zip', packdir)
+		zipfolder(f"temporary\\{name}.zip", f"temporary\\{name}")
 		print(f"temporary\\{name}.zip", os.path.exists(f"temporary\\{name}.zip"))
 		zippedPack = discord.File(f"temporary\\{name}.zip", filename=name+".zip")
 		tickfile.close()
