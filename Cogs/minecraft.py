@@ -44,8 +44,8 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		os.mkdir(f"temporary\\{name}\\data\\{name}\\functions\\")
 		print(f"temporary\\{name}\\data\\{name}\\functions\\", os.path.exists(f"temporary\\{name}\\data\\{name}\\functions\\"))
 		packdir = f"temporary\\{name}"
-		metafile = open(f"{os.path.abspath(packdir)}\\pack.mcmeta", "w")
-		tickfile = open(f"{os.path.abspath(packdir)}\\data\\{name}\\functions\\tick.mcfunction", "w")
+		metafile = open(f"{packdir}\\pack.mcmeta", "w")
+		tickfile = open(f"{packdir}\\data\\{name}\\functions\\tick.mcfunction", "w")
 		tickfile.write("# This is where you put minecraft commands that will execute each tick.\n#Separate by new lines.")
 		json.dump(packmeta, metafile, indent=4)
 		#zf = zipfile.ZipFile(f"temporary/{name}.zip","w")
