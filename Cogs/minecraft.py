@@ -51,6 +51,7 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		zippedPack = discord.File(os.path.abspath(f"temporary/{name}.zip"), filename=name+".zip")
 		tickfile.close()
 		metafile.close()
+		print(os.path.abspath(packdir))
 		shutil.rmtree(os.path.abspath(packdir))
 		await ctx.send("Created pack template!", file=zippedPack)
 		os.remove(os.path.abspath(f"temporary\\{name}.zip"))
