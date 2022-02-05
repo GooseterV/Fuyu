@@ -19,13 +19,13 @@ def absoluteFilePaths(directory):
 		for f in filenames:
 			yield os.path.abspath(os.path.join(dirpath, f))
 
-def zipfolder(foldername, target):				
-	from os.path import basename
-	with zipfile.ZipFile(target, 'w') as zipObj:
-		for folderName, subfolders, filenames in os.walk(foldername):
-			for filename in filenames:
-				filePath = os.path.join(folderName, filename)
-				zipObj.write(filePath, basename(filePath))
+def zip_directory(folder_path, zip_path):
+	with zipfile.ZipFile(zip_path, mode='w') as zipf:
+		len_dir_path = len(folder_path)
+		for root, _, files in os.walk(folder_path):
+			for file in files:
+				file_path = os.path.join(root, file)
+				zipf.write(file_path, file_path[len_dir_path:])
 
 class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 	"Commands relating to minecraft"
@@ -63,7 +63,7 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		#for fp in absoluteFilePaths(packdir):
 			#zf.write(fp)
 		#shutil.make_archive("temporary\\" + name, 'zip', packdir)
-		zipfolder(f"temporary\\{name}", f"temporary\\{name}.zip")
+		zip_directory(f"temporary\\{name}.zip", f"temporary\\{name}\\")
 		print(f"temporary\\{name}.zip", os.path.exists(f"temporary\\{name}.zip"))
 		zippedPack = discord.File(f"temporary\\{name}.zip", filename=name+".zip")
 		tickfile.close()
