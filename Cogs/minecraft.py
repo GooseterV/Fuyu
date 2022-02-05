@@ -40,6 +40,8 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		os.mkdir(f"temporary\\{name}\\data\\{name}")
 		os.mkdir(f"temporary\\{name}\\data\\{name}\\functions\\")
 		packdir = f"temporary\\{name}"
+		print(packdir)
+		print(os.path.abspath(packdir))
 		metafile = open(f"{os.path.abspath(packdir)}\\pack.mcmeta", "w")
 		tickfile = open(f"{os.path.abspath(packdir)}\\data\\{name}\\functions\\tick.mcfunction", "w")
 		tickfile.write("# This is where you put minecraft commands that will execute each tick.\n#Separate by new lines.")
@@ -48,6 +50,7 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		#for fp in absoluteFilePaths(packdir):
 			#zf.write(fp)
 		shutil.make_archive(f"temporary\\{name}", 'zip', os.path.abspath(packdir))
+		print(os.path.abspath(f"temporary/{name}.zip"))
 		zippedPack = discord.File(os.path.abspath(f"temporary/{name}.zip"), filename=name+".zip")
 		tickfile.close()
 		metafile.close()
