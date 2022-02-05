@@ -36,9 +36,13 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 			}
 		}
 		os.mkdir(f"temporary\\{name}")
+		print(f"temporary\\{name}", os.path.exists(f"temporary\\{name}"))
 		os.mkdir(f"temporary\\{name}\\data")
+		print(f"temporary\\{name}\\data", os.path.exists(f"temporary\\{name}\\data"))
 		os.mkdir(f"temporary\\{name}\\data\\{name}")
+		print(f"temporary\\{name}\\data\\{name}", os.path.exists(f"temporary\\{name}\\data\\{name}"))
 		os.mkdir(f"temporary\\{name}\\data\\{name}\\functions\\")
+		print(f"temporary\\{name}\\data\\{name}\\functions\\", os.path.exists(f"temporary\\{name}\\data\\{name}\\functions\\"))
 		packdir = f"temporary\\{name}"
 		metafile = open(f"{os.path.abspath(packdir)}\\pack.mcmeta", "w")
 		tickfile = open(f"{os.path.abspath(packdir)}\\data\\{name}\\functions\\tick.mcfunction", "w")
