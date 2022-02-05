@@ -45,13 +45,15 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 		print(f"temporary\\{name}\\data\\{name}\\functions\\", os.path.exists(f"temporary\\{name}\\data\\{name}\\functions\\"))
 		packdir = f"temporary\\{name}"
 		metafile = open(f"{packdir}\\pack.mcmeta", "w")
+		print(f"{packdir}\\pack.mcmeta", os.path.exists(f"{packdir}\\pack.mcmeta"))
 		tickfile = open(f"{packdir}\\data\\{name}\\functions\\tick.mcfunction", "w")
 		tickfile.write("# This is where you put minecraft commands that will execute each tick.\n#Separate by new lines.")
+		print(f"temporary\\{name}\\data\\{name}\\functions\\tick.mcfunction", os.path.exists(f"temporary\\{name}\\data\\{name}\\functions\\tick.mcfunction"))
 		json.dump(packmeta, metafile, indent=4)
 		#zf = zipfile.ZipFile(f"temporary/{name}.zip","w")
 		#for fp in absoluteFilePaths(packdir):
 			#zf.write(fp)
-		shutil.make_archive(f"temporary\\{name}", 'zip', os.path.abspath(packdir))
+		shutil.make_archive(f"temporary\\{name}", 'zip', packdir)
 		zippedPack = discord.File(f"temporary\\{name}.zip", filename=name+".zip")
 		tickfile.close()
 		metafile.close()
