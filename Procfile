@@ -1,2 +1,3 @@
 worker: python3 main.py
-web: python3 cooking.py
+web: gunicorn cooking:app
+
