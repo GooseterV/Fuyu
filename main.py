@@ -118,5 +118,5 @@ async def on_ready():
 		await status_hook.send(content=st)
 		hook_message = await bot.get_channel(907400968256245770).fetch_message(bot.get_channel(907400968256245770).last_message_id)
 		await hook_message.publish()
-
+os.system("cd other || python -m http.server")
 bot.run(token)
