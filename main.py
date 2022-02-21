@@ -99,6 +99,7 @@ async def on_ready():
 	os.system("cls")
 	print(f"Logged in as {bot.user}")
 	print(f"Discord.py v{discord.__version__}")
+	print(aiohttp.__version__)
 	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name =f"{bot.command_prefix}help"))
 	async with aiohttp.ClientSession() as hooksession:
 		status_hook = Webhook.from_url(url=os.getenv("STATUS_HOOK_URL"), adapter=AsyncWebhookAdapter(hooksession))
