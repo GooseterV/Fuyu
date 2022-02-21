@@ -8,7 +8,7 @@ import time
 import aiohttp
 import discord
 import pandas as pd
-from discord.webhook.async_ import AsyncWebhookAdapter, Webhook
+from discord import AsyncWebhookAdapter, Webhook
 from discord.ext import commands
 from discord_slash import SlashCommand, SlashContext, cog_ext
 from dotenv import load_dotenv
@@ -64,7 +64,10 @@ async def restart(ctx):
 			st = f"🔹  🔹  🔹  🔹  🔹\nStatus Update: **Restarting <a:fuyu_loading:907403532922126337>**\nTimestamp - **{frmtedtime}**\n🔹  🔹  🔹  🔹  🔹\n\u200B"
 			await status_hook.send(content=st)
 			hook_message = await bot.get_channel(907400968256245770).fetch_message(bot.get_channel(907400968256245770).last_message_id)
-			await hook_message.publish()
+			try:
+				await hook_message.publish()
+			except:
+				pass
 			os.execv(sys.executable, ['python'] + sys.argv)
 	elif ctx.author.id != 657993676257099788:
 		await ctx.send("You cannot run this command!")
@@ -88,7 +91,10 @@ async def shutdown(ctx):
 			st = f"🔹  🔹  🔹  🔹  🔹\nStatus Update: **Shutting Down <:fuyu_sleepy:907403532292988989>**\nTimestamp - **{frmtedtime}**\n🔹  🔹  🔹  🔹  🔹\n​​\u200B"
 			await status_hook.send(content=st)
 			hook_message = await bot.get_channel(907400968256245770).fetch_message(bot.get_channel(907400968256245770).last_message_id)
-			await hook_message.publish()
+			try:
+				await hook_message.publish()
+			except:
+				pass
 			exit()
 	elif ctx.author.id != 657993676257099788:
 		await ctx.send("You cannot run this command!")
@@ -99,7 +105,6 @@ async def on_ready():
 	os.system("cls")
 	print(f"Logged in as {bot.user}")
 	print(f"Discord.py v{discord.__version__}")
-	print(aiohttp.__version__)
 	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name =f"{bot.command_prefix}help"))
 	async with aiohttp.ClientSession() as hooksession:
 		status_hook = Webhook.from_url(url=os.getenv("STATUS_HOOK_URL"), adapter=AsyncWebhookAdapter(hooksession))
@@ -118,6 +123,9 @@ async def on_ready():
 		st = f"🔹  🔹  🔹  🔹  🔹\nStatus Update: **Online 🔵**\nTimestamp - **{frmtedtime}**\n🔹  🔹  🔹  🔹  🔹\n\u200B"
 		await status_hook.send(content=st)
 		hook_message = await bot.get_channel(907400968256245770).fetch_message(bot.get_channel(907400968256245770).last_message_id)
-		await hook_message.publish()
+		try:
+			await hook_message.publish()
+		except:
+			pass
 
 bot.run(token)
