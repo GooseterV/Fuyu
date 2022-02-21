@@ -42,7 +42,7 @@ def initializeDB(conn):
 			"lvl":0,
 			"xp":0
 		}])
-	ud.to_sql("users", conn, if_exists="replace")
+	ud.to_sql("users", conn, if_exists="replace", index=False)
 	return 1
 
 def registerUser(id, conn):
@@ -55,7 +55,7 @@ def registerUser(id, conn):
 			"lvl":0,
 			"xp":0
 		}])
-		ud.to_sql("users", conn, if_exists="append")
+		ud.to_sql("users", conn, if_exists="append", index=False)
 		return 1
 	elif userRegistered(id, conn):
 		return Errors.UserRegisteredError(id, "User is already registered!")
@@ -85,7 +85,7 @@ def userRegistered(id, conn):
 def updateUser(id, newdata, conn):
 	users = getUsers(conn)
 	users = [newdata if user["id"] == id else user for user in users]
-	pd.DataFrame(users).to_sql("users", conn, if_exists="replace")
+	pd.DataFrame(users).to_sql("users", conn, if_exists="replace", index=False)
 	return 1
 
 def withdrawMoney(amount, id, conn):
