@@ -9,6 +9,20 @@ ___
 #### Self Hosting
 
 Install Python 3.10.0+ with py launcher, ensure pip is installed along with it
+<br>
+Verify python installation
+- `python --version`
+Verify pip
+- `python -m pip --version`
 
+**WINDOWS**
+- run `startup.cmd`
+  
+**LINUX**
+- run `startup.sh`
 
+### **Reporting Issues/Bugs**
+
+**[`Fuyu/Issues`](https://github.com/gooseterv/fuyu/issues)**
+</br>
 <img src="assets/repo.png">
