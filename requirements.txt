@@ -127,4 +127,8 @@ pandas
 gunicorn
 Flask
 cloudinary
+pandas
+SQLAlchemy
+psycopg2
+
 aiohttp==3.7.3

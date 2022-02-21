@@ -28,8 +28,12 @@ class OnCommandErrorCog(commands.Cog, name="on command error"):
 				await ctx.send(f"This command has a cooldown. Please wait `{error.retry_after:.2f}` second(s)")
 		elif isinstance(error, CommandNotFound):
 			cmds = [(i, v)[0] for i, v in self.bot.all_commands.items()]
-			ccmd = difflib.get_close_matches(f"{ctx.invoked_with}", cmds, n=1)[0]
-			await ctx.send(f"Command `~{ctx.invoked_with}` does not exist. Did you mean **~{ccmd}**?")
+			ccmds = difflib.get_close_matches(f"{ctx.invoked_with}", cmds, n=1)
+			if len(ccmds) < 1:
+				await ctx.send(f"Command `~{ctx.invoked_with}` does not exist.")
+			elif len(ccmds) > 0:
+				ccmd = ccmds[0]
+				await ctx.send(f"Command `~{ctx.invoked_with}` does not exist. Did you mean **~{ccmd}**?")
 			return
 		elif isinstance(error, MissingPermissions):
 			await ctx.send("You are missing the required permissions to use this command!");print(error)
