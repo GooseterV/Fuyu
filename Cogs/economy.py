@@ -227,7 +227,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					description = "Add money to someone's account (owner only)",
 					aliases = ["addbalance", "givemoney", "aw"])
 	@commands.cooldown(1, 2, commands.BucketType.member)
-	async def withdraw(self, ctx, amount:int, member:discord.Member):
+	async def addmoney(self, ctx, amount:int, member:discord.Member):
 		conn = refreshConn(DB_URL)
 		if ctx.author.id == 657993676257099788:
 			if not userRegistered(member.id, conn):
