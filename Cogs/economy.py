@@ -175,7 +175,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 	async def balance(self, ctx, member:discord.Member=None):
 		conn = refreshConn(DB_URL)
 		if not member and not userRegistered(ctx.author.id, conn):
-			await ctx.send(embed=discord.Embed(description=f"You are not registered!"), color=1356771)
+			await ctx.send(embed=discord.Embed(description=f"You are not registered!", color=1356771))
 			return 0
 
 		if not member:
