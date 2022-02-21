@@ -13,7 +13,7 @@ Install Python 3.10.0+ with py launcher, ensure pip is installed along with it
 Verify python installation
 - `python --version`
 
-Verify pip
+Verify pip installation
 - `python -m pip --version`
 
 **WINDOWS**
