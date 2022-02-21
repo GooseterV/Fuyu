@@ -1,4 +1,4 @@
-aiohttp==3.7.3
+
 aiosignal
 async-timeout
 asyncio
@@ -127,3 +127,4 @@ pandas
 gunicorn
 Flask
 cloudinary
+aiohttp==3.7.3

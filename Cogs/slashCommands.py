@@ -11,7 +11,8 @@ import aiohttp
 import discord
 import pyspectrum
 from colormath.color_objects import LuvColor
-from discord import AsyncWebhookAdapter, Webhook, guild
+from discord.webhook.async_ import AsyncWebhookAdapter, Webhook
+from discord import guild
 from discord.ext import commands
 from discord.ext.commands.converter import _get_from_guilds
 from discord.http import Route
