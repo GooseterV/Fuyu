@@ -24,5 +24,5 @@ Verify pip
 ### **Reporting Issues/Bugs**
 
 **[`Fuyu/Issues`](https://github.com/gooseterv/fuyu/issues)**
-</br>
+___
 <img src="assets/repo.png">
