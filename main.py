@@ -101,7 +101,7 @@ async def shutdown(ctx):
 @bot.event
 async def on_member_join(member:discord.Member):
 	if member.guild.id == 907399013328896023:
-		member.add_roles(discord.utils.get(member.server.roles, id=907399013328896023))
+		await member.add_roles(member.guild.get_role(908872546672320573))
 	
 
 
