@@ -32,8 +32,6 @@ class Greetings(commands.Cog):
 		self._last_member = None
 
 
-
-
 bot = commands.Bot(command_prefix=prefix, intents=discord.Intents.all(), owner_id=owner_id, case_insensitive=True)
 slash = SlashCommand(bot, sync_commands=True, sync_on_cog_reload=True, delete_from_unused_guilds=True)
 
@@ -99,6 +97,13 @@ async def shutdown(ctx):
 			exit()
 	elif ctx.author.id != 657993676257099788:
 		await ctx.send("You cannot run this command!")
+
+@bot.event
+async def on_member_join(member:discord.Member):
+	if member.guild.id == 907399013328896023:
+		member.add_roles(discord.utils.get(member.server.roles, id=907399013328896023))
+	
+
 
 @bot.event
 async def on_ready():
