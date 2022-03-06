@@ -214,6 +214,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					aliases = ["dep", "dp"])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def deposit(self, ctx, amount:int):
+		"""Deposit money from your wallet to your bank account."""
 		conn = refreshConn(DB_URL)
 		if userRegistered(ctx.author.id, conn):
 			depositMoney(amount, ctx.author.id, conn)
@@ -228,6 +229,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					aliases = ["addbalance", "givemoney", "aw"])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def addmoney(self, ctx, amount:int, member:discord.Member):
+		"""Add money to someone's account (owner only)"""
 		conn = refreshConn(DB_URL)
 		if ctx.author.id == 657993676257099788:
 			if not userRegistered(member.id, conn):
@@ -237,6 +239,56 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 				await ctx.send(embed=discord.Embed(description=f"Added {amount} {FUYUCOIN} to {member.name}'s wallet.", color=1356771))
 		elif not ctx.author.id == 657993676257099788:
 			await ctx.send("You cannot run this command!")
+		conn.dispose()
+
+	@commands.command(name = "beg",
+					usage="<amount:INT> <member:discord.Member>",
+					description = "Beg for money like the beggar you are.",
+					aliases = ["addbalance", "givemoney", "aw"])
+	@commands.cooldown(1, 2, commands.BucketType.member)
+	async def beg(self, ctx, amount:int, member:discord.Member):
+		"""Beg for money like the beggar you are."""
+
+		conn = refreshConn(DB_URL)
+		people = [
+      		"Elon Musk", "Jeff Bezos", "Goose", "Ben Stewart", "NaticusV", "Shaq", "Jesus",
+            "Queen Elizabeth", "Joe Biden", "Miley Cirus", "Guido van Rossum", "Brendan Eich",
+            "A Mime", "James Gosling", "Kanye West", "Keanu Reeves", "David Wheeler", "Linus Torvalds",
+            "Gordon Ramsey", "Simon Cowell", "Wayne Brady", "Will Smith", "Dwayne Johnson", "Dr Phil", "Steve Harvey",
+            
+        ]
+
+		actions = [
+			"gifted you", "donated", "gave you", "added to your balance",
+			"got you", "brought you", "threw you", "regurgitated on you"
+		]
+
+		negatives = [
+			"refused to give you any money", 
+			"denied your request",
+			"refused to answer you",
+			"didn't have time for you",
+			"rejected you",
+			"thinks you should leave",
+			"gives you worrying glances and declines"
+		]
+
+		random.shuffle(people)
+		random.shuffle(actions)
+		random.shuffle(negatives)
+		if not userRegistered(ctx.author.id, conn):
+			await ctx.send(embed=discord.Embed(description=f"You are not registered!", color=1356771))
+		elif userRegistered(member.id, conn):
+			multiplier = 1
+			amount = random.randint(0, 100*multiplier)
+			person = random.choice(people)
+			action = random.choice(actions)
+			addMoney(amount, ctx.author.id, conn)
+			if amount > 0:
+				await ctx.send(embed=discord.Embed(description=f"{person} {action} {amount} {FUYUCOIN} ", color=1356771))
+			elif amount <= 0:
+				negative = random.choice(negatives)
+				await ctx.send(embed=discord.Embed(description=f"{person} {negative}.", color=15088688))
 		conn.dispose()
 
 def setup(bot:commands.Bot):
