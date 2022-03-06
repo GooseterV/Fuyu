@@ -89,10 +89,10 @@ def updateUser(id, newdata, conn):
 	return 1
 
 def withdrawMoney(amount, id, conn):
-	if amount > getUserById(id)["bank"]:
+	if amount > getUserById(id, conn)["bank"]:
 		return Errors.InvalidBalanceError(f"Bank amount less than withdrawl amount.")
-	elif amount <= getUserById(id)["bank"]:
-		user = getUserById(id)
+	elif amount <= getUserById(id, conn)["bank"]:
+		user = getUserById(id, conn)
 		updateUser(id, {
 			"wallet":user["wallet"]+amount,
 			"bank":user["bank"]-amount,
