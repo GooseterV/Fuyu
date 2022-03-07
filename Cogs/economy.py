@@ -250,7 +250,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					description = "Beg for money like the beggar you are.",
 					aliases = [])
 	@commands.cooldown(1, 2, commands.BucketType.member)
-	async def beg(self, ctx, amount:int, member:discord.Member):
+	async def beg(self, ctx):
 		"""Beg for money like the beggar you are."""
 
 		conn = refreshConn(DB_URL)
@@ -282,7 +282,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 		random.shuffle(negatives)
 		if not userRegistered(ctx.author.id, conn):
 			await ctx.send(embed=discord.Embed(description=f"You are not registered!", color=1356771))
-		elif userRegistered(member.id, conn):
+		elif userRegistered(ctx.author.id, conn):
 			multiplier = 1
 			amount = random.randint(0, 100*multiplier)
 			person = random.choice(people)
