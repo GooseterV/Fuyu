@@ -29,6 +29,7 @@ class MinecraftCog(commands.Cog, name="Minecraft Commands"):
 					description = "Generates a datapack template with the parameters specified.")
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def datapack(self, ctx, name, description, icon_url, pack_version=8):
+		"""Generates a datapack template with the parameters specified. (CURRENTLY OUT OF ORDER?)"""
 		packmeta = {
 			"pack": {
 				"pack_format": pack_version,

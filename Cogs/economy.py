@@ -143,6 +143,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					aliases = [])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def register(self, ctx):
+		""" Registers a user in the economy section of the bot """
 		conn = refreshConn(DB_URL)
 		if userRegistered(ctx.author.id, conn):
 			e = discord.Embed(description="You are already registered!", color=1356771)
@@ -159,6 +160,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					aliases = [])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def initialize(self, ctx):
+		""" Initiates the database ( for owner only ) """
 		conn = refreshConn(DB_URL)
 		if ctx.author.id == 657993676257099788:
 			initializeDB(conn)
@@ -169,10 +171,11 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 
 	@commands.command(name = "balance",
 					usage="<member:optional>",
-					description = "check the balance of your account.",
+					description = "Check the balance of your wallet and bank account.",
 					aliases = ["bal"])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def balance(self, ctx, member:discord.Member=None):
+		""" Check the balance of your wallet and bank account. """
 		conn = refreshConn(DB_URL)
 		if not member and not userRegistered(ctx.author.id, conn):
 			await ctx.send(embed=discord.Embed(description=f"You are not registered!", color=1356771))
@@ -198,6 +201,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					aliases = ["with", "wd"])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def withdraw(self, ctx, amount:int):
+		""" Withdraw money from your bank account. """
 		conn = refreshConn(DB_URL)
 		if userRegistered(ctx.author.id, conn):
 			withdrawMoney(amount, ctx.author.id, conn)
