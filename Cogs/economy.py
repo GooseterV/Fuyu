@@ -242,9 +242,9 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 		conn.dispose()
 
 	@commands.command(name = "beg",
-					usage="<amount:INT> <member:discord.Member>",
+					usage="",
 					description = "Beg for money like the beggar you are.",
-					aliases = ["addbalance", "givemoney", "aw"])
+					aliases = [])
 	@commands.cooldown(1, 2, commands.BucketType.member)
 	async def beg(self, ctx, amount:int, member:discord.Member):
 		"""Beg for money like the beggar you are."""
