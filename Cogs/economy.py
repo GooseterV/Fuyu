@@ -249,7 +249,7 @@ class EconomyCog(commands.Cog, name="Economy Commands"):
 					usage="",
 					description = "Beg for money like the beggar you are.",
 					aliases = [])
-	@commands.cooldown(1, 2, commands.BucketType.member)
+	@commands.cooldown(1, 45, commands.BucketType.member)
 	async def beg(self, ctx):
 		"""Beg for money like the beggar you are."""
 
